@@ -2,7 +2,7 @@
   const burgerItem = document.querySelector('.burger');
   const navActive = document.querySelector('.nav');
   const navClose = document.querySelector('.nav_close');
-  const headerList = document.querySelector('.header_list')
+  const headerList = document.querySelector('.header_list');
 
   burgerItem.addEventListener('click', () => {
     navActive.classList.add('nav_active', 'nav_animation');
