@@ -115,7 +115,7 @@ prev = () => {
   if (count < 0) {
     count = 0;
   }
-  carousel.style.left = '-' + count * 475 + 'px';
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
@@ -127,7 +127,7 @@ next = () => {
   if (count > 4) {
     count = 4;
   }
-  carousel.style.left = '-' + count * 475 + 'px';
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
