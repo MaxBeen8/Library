@@ -578,7 +578,7 @@
       </div>
     </section>
       <div class="modal" id="my_modal_register">
-        <form action="">
+        <form action="" id="form_register">
           <div class="modal_register">
             <div class="modal_close" id="modal_close_register">
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
@@ -589,14 +589,14 @@
             <p class="fonts_register_login">Register</p>
             <div class="input">
               <p class="fonts_label">First name</p>
-              <input type="text" name="first_name" class="input_modal">
+              <input type="text" name="first_name" class="input_modal" id="first_name" required>
               <p  class="fonts_label">Last name</p>
-              <input type="text" name="Last_name" class="input_modal">
+              <input type="text" name="last_name" class="input_modal" id="last_name" required>
               <p class="fonts_label">E-mail</p>
-              <input type="text" name="E-mail" class="input_modal">
+              <input type="text" name="E-mail" class="input_modal" id="email" required>
               <p class="fonts_label">Password</p>
-              <input type="text" name="Password" class="input_modal">
-              <button class="button">Sign Up</button>
+              <input type="password" name="password" class="input_modal" id="password_register" pattern="[A-Za-z0-9]{5,30}" required>
+              <button class="button_signup" id="button_signup">Sign Up</button>
             </div>
             <div class="have_acc">
               <p class="have_acc_fonts">Already have an account?</p>
@@ -617,10 +617,10 @@
             <p class="fonts_register_login">Login</p>
             <div class="input">
               <p class="fonts_label">E-mail or readers card</p>
-              <input type="text" name="E-mail_or_readers_card" class="input_modal">
+              <input type="text" name="E-mail_or_readers_card" class="input_modal" id="email_or_readers_card">
               <p class="fonts_label">Password</p>
-              <input type="text" name="Password" class="input_modal">
-              <button class="button">Sign Up</button>
+              <input type="password" name="password" class="input_modal" id="password_login">
+              <button class="button_login" id="button_login">Log In</button>
             </div>
             <div class="have_acc">
               <p class="have_acc_fonts">Don’t have an account?</p>

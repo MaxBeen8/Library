@@ -61,53 +61,54 @@ const circleFive = document.getElementById('circleFive');
 const circle = document.querySelectorAll('.circle');
 const right = document.querySelector('.right');
 const left = document.querySelector('.left');
+const image_img = document.querySelector('.image_img').offsetWidth;
 let count = 0;
 
   
 circleOne.addEventListener('click', () => {
-  carousel.style.left = '0px';
+  count = 0;  
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
   circleOne.classList.add('circle_current');
-  count = 0;  
-})
+  })
 
 circleTwo.addEventListener('click', () => {
-  carousel.style.left = '-475px';
+  count = 1;
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
   circleTwo.classList.add('circle_current');
-  count = 1;
-})
+  })
 
 circleThree.addEventListener('click', () => {
-  carousel.style.left = '-950px';
+  count = 2;
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
   circleThree.classList.add('circle_current');
-  count = 2;
-})
+  })
 
 circleFour.addEventListener('click', () => {
-  carousel.style.left = '-1425px';
+  count = 3; 
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
   circleFour.classList.add('circle_current'); 
-  count = 3; 
-})
+  })
 
 circleFive.addEventListener('click', () => {
-  carousel.style.left = '-1900px';
+  count = 4;  
+  carousel.style.left = (-25 - image_img) * count + 'px';
   circle.forEach (item => {
     item.classList.remove('circle_current');
   })
   circleFive.classList.add('circle_current');
-  count = 4;  
-})
+  })
 
 prev = () => {
   count--;
@@ -263,4 +264,45 @@ document.getElementById('login_register').addEventListener('click', () => {
 })
 
 /* Log in finish */
+
+/* Local Storage start */
+
+const first_name = document.getElementById('first_name');
+const last_name = document.getElementById('last_name');
+const email = document.getElementById('email');
+const password_register = document.getElementById('password_register');
+const button_signup = document.getElementById('button_signup');
+const email_or_readers_card = document.getElementById('e-mail_or_readers_card');
+const password_login = document.getElementById('password_login');
+const button_login = document.getElementById('button_login');
+
+
+let users = JSON.parse(localStorage.getItem('usersArray'));
+console.log(users);
+
+class newUser {
+  constructor (first_name, last_name, email, password) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.password = password;
+  }
+}
+
+
+let emailRegexp = /([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/g;
+let passRegexp = /[A-Za-z0-9]{5,30}/g;
+
+
+function registerNewUser() {
+  if (emailRegexp.test(email.value) && passRegexp.test(password_register.value)) {
+    users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value));
+    localStorage.setItem('usersArray', JSON.stringify(users));
+  }
+}
+
+button_signup.addEventListener('click', registerNewUser);
+/* Local Storage finish */
+
+
 
