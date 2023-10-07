@@ -46,7 +46,7 @@ html {
 }
 
 .nav_flex {
-  display: flex; 
+  display: flex;
 }
 
 .header_list {
@@ -81,10 +81,22 @@ text-decoration: none;
   margin-right: 30px;
 }
 
+.avatar_item_with_auth {
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  background-color: #FFF;
+  display: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+}
+
 .avatar_and_burger {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  gap: 40px;
 }
 
 .burger {
@@ -116,10 +128,28 @@ text-decoration: none;
   bottom: 0;
 }
 
-.avatar_item_burger {
+.avatar_item_burger_no_auth {
   display: none;
 }
 
+.icon {
+  cursor: pointer;
+}
+
+.icon_burger {
+  cursor: pointer;
+}
+
+.avatar_font {
+  text-transform: uppercase;
+  text-align: center;
+  color: #BB945F;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
 
 .header_link {
   font-family: 'Inter';
@@ -157,6 +187,10 @@ text-decoration: none;
   width: 80px;
   height: 115px;
   background: #FFF;
+  display: none;
+}
+
+.avatar_item_burger_with_auth {
   display: none;
 }
 
@@ -1136,6 +1170,7 @@ input[type='radio'] {
   cursor: pointer;
 }
 
+
 /* Modal finish*/
 
 
@@ -1161,24 +1196,10 @@ input[type='radio'] {
       transition: 0.2s all linear;
     }
 
-    .avatar_item_burger {
-      position: absolute;
-      display: block;
-      width: 32px;
-      height: 32px;
-      z-index: 2;
-    }
-
-    .icon_burger {
-      position: absolute;
-      top: 32px;
-      right: -45px;
-    }
-
     .nav_close {
       cursor: pointer;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       position: absolute;
       top: 30px;
       right: 20px;
@@ -1230,10 +1251,6 @@ input[type='radio'] {
       opacity: 0.60;
     }
 
-    .avatar_item {
-      margin-right: 40px;
-    }
-
     .drop_menu_no_auth {
       top: 60px;
       right: 105px;
@@ -1242,7 +1259,6 @@ input[type='radio'] {
     .drop_menu_with_auth {
       top: 60px;
       right: 105px;
-      
     }
 
     .circle:nth-last-child(-n + 2) {
@@ -1310,6 +1326,30 @@ input[type='radio'] {
 
     .flex_button {
       justify-content: center;
+    }
+
+    .avatar_item_burger_no_auth {
+      display: block;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 30px;
+      right: 92px;
+    }
+
+    .avatar_item_burger_with_auth {
+      justify-content: center;
+      align-items: center;
+      border-radius: 28px;
+      background-color: #FFF;
+      display: none;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 30px;
+      right: 92px;
     }
   }
 /* Media finish */

@@ -197,34 +197,14 @@ autumn.addEventListener('click', () => {
 
 /* Log in start */
 
-const avatar = document.querySelector('.icon');
-const avatar_burger = document.querySelector('.icon_burger');
-const menuNoAuth = document.querySelector('.drop_menu_no_auth');
-const menuWithAuth = document.querySelector('.drop_menu_with_auth');
-
-avatar.addEventListener('click', () => {
-  menuNoAuth.classList.toggle('display_block_avatar');
-});
-
-avatar_burger.addEventListener('click', () => {
-  navActive.classList.remove('nav_active');
-  menuNoAuth.classList.toggle('display_block_avatar');
-});
-
-document.addEventListener('click', (element) => {
-  if (!element.composedPath().includes(avatar) && !element.composedPath().includes(menuNoAuth) && !element.composedPath().includes(menuWithAuth) && !element.composedPath().includes(avatar_burger)) {
-		menuNoAuth.classList.remove('display_block_avatar');
-    menuWithAuth.classList.remove('display_block_avatar');
-	}
-})
-
-
 const modalLogIn = document.querySelector('.modal_login');
 const modalRegister = document.querySelector('.modal_register');
 const myModalLogIn = document.getElementById('my_modal_login');
 const myModalRegister = document.getElementById('my_modal_register');
 const logIn = document.getElementById('log_in');
 const register = document.getElementById('register');
+const myProfile = document.getElementById('my_profile');
+const logOut = document.getElementById('log_out');
 const modalCloseRegister = document.getElementById('modal_close_register');
 const modalCloseLogIn = document.getElementById('modal_close_login');
 
@@ -263,22 +243,100 @@ document.getElementById('login_register').addEventListener('click', () => {
   myModalLogIn.classList.add('open');
 })
 
+const avatar_item_no_auth = document.querySelector('.avatar_item_no_auth');
+const avatar_item_burger_no_auth = document.querySelector('.avatar_item_burger_no_auth');
+const avatar_item_with_auth = document.querySelector('.avatar_item_with_auth');
+const avatar_item_burger_with_auth = document.querySelector('.avatar_item_burger_with_auth');
+const menuNoAuth = document.querySelector('.drop_menu_no_auth');
+const menuWithAuth = document.querySelector('.drop_menu_with_auth');
+const avatar_font_none = document.getElementById('avatar_font_none');
+let with_body = window.innerWidth;
+
+function changeWithTrue() {
+  with_body = window.innerWidth;
+  if (with_body <= 1440) {
+    avatar_item_burger_no_auth.style.display = 'none';
+    avatar_item_burger_with_auth.style.display = 'flex';
+  } else {
+    avatar_item_burger_with_auth.style.display = 'none';
+  }
+}
+
+window.addEventListener('resize', changeWithTrue);
+
+
+
+if (localStorage.getItem('loginStatus') === 'true') {
+
+  avatar_item_no_auth.style.display = 'none';
+  avatar_item_with_auth.style.display = 'flex';
+  window.addEventListener('resize', changeWithTrue);
+
+
+
+  avatar_item_with_auth.addEventListener('click', () => {
+    menuWithAuth.classList.toggle('display_block_avatar');
+  });
+  
+  avatar_item_burger_with_auth.addEventListener('click', () => {
+    navActive.classList.remove('nav_active');
+    menuWithAuth.classList.toggle('display_block_avatar');
+  });
+  
+  document.addEventListener('click', (element) => {
+    if (!element.composedPath().includes(avatar_item_with_auth) && !element.composedPath().includes(menuWithAuth) && !element.composedPath().includes(avatar_item_burger_with_auth)) {
+      menuWithAuth.classList.remove('display_block_avatar');
+    }
+  })
+}
+
+
+function changeWithFalse() {
+  with_body = window.innerWidth;
+  if (with_body > 1440) {
+    avatar_item_burger_no_auth.style.display = 'none';
+  } else {
+    avatar_item_burger_with_auth.style.display = 'none';
+    avatar_item_burger_no_auth.style.display = 'block';
+  }
+}
+
+
+if (localStorage.getItem('loginStatus') === 'false') {
+
+  avatar_item_no_auth.style.display = 'block';
+  avatar_item_with_auth.style.display = 'none';
+  window.addEventListener('resize', changeWithFalse);
+  
+
+  avatar_item_no_auth.addEventListener('click', () => {
+    menuNoAuth.classList.toggle('display_block_avatar');
+  });
+  
+  avatar_item_burger_no_auth.addEventListener('click', () => {
+    navActive.classList.remove('nav_active');
+    menuNoAuth.classList.toggle('display_block_avatar');
+  });
+  
+  document.addEventListener('click', (element) => {
+    if (!element.composedPath().includes(avatar_item_no_auth) && !element.composedPath().includes(menuNoAuth) && !element.composedPath().includes(avatar_item_burger_no_auth)) {
+      menuNoAuth.classList.remove('display_block_avatar');
+    }
+  })
+}
+
 /* Log in finish */
 
-/* Local Storage start */
+/* Register start */
 
 const first_name = document.getElementById('first_name');
 const last_name = document.getElementById('last_name');
 const email = document.getElementById('email');
 const password_register = document.getElementById('password_register');
 const button_signup = document.getElementById('button_signup');
-const email_or_readers_card = document.getElementById('e-mail_or_readers_card');
-const password_login = document.getElementById('password_login');
-const button_login = document.getElementById('button_login');
 
 
 let users = JSON.parse(localStorage.getItem('usersArray'));
-console.log(users);
 
 class newUser {
   constructor (first_name, last_name, email, password) {
@@ -298,11 +356,50 @@ function registerNewUser() {
   if (emailRegexp.test(email.value) && passRegexp.test(password_register.value)) {
     users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value));
     localStorage.setItem('usersArray', JSON.stringify(users));
+    alert('Success');
   }
 }
 
 button_signup.addEventListener('click', registerNewUser);
-/* Local Storage finish */
+/* Register finish */
+
+/* Log In start */
+const email_login = document.getElementById('email_login');
+const password_login = document.getElementById('password_login');
+const button_login = document.getElementById('button_login');
+
+
+function LoginUser() {
+    let i = 0;
+    while (i < users.length) {
+      if (users[i].email === email_login.value && users[i].password === password_login.value){
+        return localStorage.setItem('loginStatus', true);
+      }
+      i++;
+    }
+    alert ('Invalid password or email')
+  }   
+
+button_login.addEventListener('click', LoginUser);
+/* Log In finish */
+
+
+/* Log out start */
+
+const button_logout = document.getElementById('log_out');
+
+function LogoutUser() {
+  localStorage['loginStatus'] = false;
+  location.reload();
+}
+
+button_logout.addEventListener('click', LogoutUser);
+
+
+/* Log out finish */
+
+
+
 
 
 

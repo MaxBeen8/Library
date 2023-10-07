@@ -32,10 +32,11 @@
                 <a href="#library_card" class="header_link js-scroll">Library Card</a>
               </li>
             </ul>
-            <div class="avatar_item_burger">
-              <a class="header_link">
+            <div class="avatar_item_burger_with_auth">
+              <p class="avatar_font" id="avatar_font_none">AI</p>
+            </div>
+            <div class="avatar_item_burger_no_auth">
               <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon_burger">
-              </a>
             </div>
             <div class="nav_close">
               <span class="close_line"></span>
@@ -43,10 +44,11 @@
             </div>
           </nav> 
           <div class="avatar_and_burger">
-            <div class="avatar_item">
-              <a class="header_link">
-              <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon">
-              </a>
+            <div class="avatar_item_with_auth">
+              <p class="avatar_font">AI</p>
+            </div>
+            <div class="avatar_item_no_auth">
+              <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon_burger">
             </div>
             <div class="burger">
                 <span class="burger_line burger_line_first"></span>
@@ -66,8 +68,8 @@
       <div class="drop_menu_with_auth fade-in-animation">
         <p class="fonts_profile">Profile</p>
         <div class="fonts_log_in_register_my_profile_log_out">
-          <p class="cursor">My profile</p>
-          <p class="cursor">Log Out</p>
+          <p class="cursor" id="my_profile">My profile</p>
+          <p class="cursor" id="log_out">Log Out</p>
         </div>
       </div>
   </header>
@@ -617,7 +619,7 @@
             <p class="fonts_register_login">Login</p>
             <div class="input">
               <p class="fonts_label">E-mail or readers card</p>
-              <input type="text" name="E-mail_or_readers_card" class="input_modal" id="email_or_readers_card">
+              <input type="text" name="E-mail_or_readers_card" class="input_modal" id="email_login">
               <p class="fonts_label">Password</p>
               <input type="password" name="password" class="input_modal" id="password_login">
               <button class="button_login" id="button_login">Log In</button>
