@@ -249,7 +249,6 @@ const avatar_item_with_auth = document.querySelector('.avatar_item_with_auth');
 const avatar_item_burger_with_auth = document.querySelector('.avatar_item_burger_with_auth');
 const menuNoAuth = document.querySelector('.drop_menu_no_auth');
 const menuWithAuth = document.querySelector('.drop_menu_with_auth');
-const avatar_font_none = document.getElementById('avatar_font_none');
 let with_body = window.innerWidth;
 
 function changeWithTrue() {
@@ -264,31 +263,6 @@ function changeWithTrue() {
 
 window.addEventListener('resize', changeWithTrue);
 
-
-
-if (localStorage.getItem('loginStatus') === 'true') {
-
-  avatar_item_no_auth.style.display = 'none';
-  avatar_item_with_auth.style.display = 'flex';
-  window.addEventListener('resize', changeWithTrue);
-
-
-
-  avatar_item_with_auth.addEventListener('click', () => {
-    menuWithAuth.classList.toggle('display_block_avatar');
-  });
-  
-  avatar_item_burger_with_auth.addEventListener('click', () => {
-    navActive.classList.remove('nav_active');
-    menuWithAuth.classList.toggle('display_block_avatar');
-  });
-  
-  document.addEventListener('click', (element) => {
-    if (!element.composedPath().includes(avatar_item_with_auth) && !element.composedPath().includes(menuWithAuth) && !element.composedPath().includes(avatar_item_burger_with_auth)) {
-      menuWithAuth.classList.remove('display_block_avatar');
-    }
-  })
-}
 
 
 function changeWithFalse() {
@@ -335,18 +309,18 @@ const email = document.getElementById('email');
 const password_register = document.getElementById('password_register');
 const button_signup = document.getElementById('button_signup');
 
-
 let users = JSON.parse(localStorage.getItem('usersArray'));
 
+
 class newUser {
-  constructor (first_name, last_name, email, password) {
+  constructor (first_name, last_name, email, password, initials) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
     this.password = password;
+    this.initials = initials;
   }
 }
-
 
 let emailRegexp = /([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})/g;
 let passRegexp = /[A-Za-z0-9]{5,30}/g;
@@ -354,7 +328,7 @@ let passRegexp = /[A-Za-z0-9]{5,30}/g;
 
 function registerNewUser() {
   if (emailRegexp.test(email.value) && passRegexp.test(password_register.value)) {
-    users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value));
+    users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value, first_name.value[0].toUpperCase() + last_name.value[0].toUpperCase()));
     localStorage.setItem('usersArray', JSON.stringify(users));
     alert('Success');
   }
@@ -369,18 +343,64 @@ const password_login = document.getElementById('password_login');
 const button_login = document.getElementById('button_login');
 
 
+
 function LoginUser() {
     let i = 0;
     while (i < users.length) {
       if (users[i].email === email_login.value && users[i].password === password_login.value){
+        users.push(users[i]);
+        users.splice(i, 1);
+        localStorage.setItem('usersArray', JSON.stringify(users));        
         return localStorage.setItem('loginStatus', true);
       }
       i++;
     }
-    alert ('Invalid password or email')
-  }   
+    alert ('Invalid password or email');
+  }
 
 button_login.addEventListener('click', LoginUser);
+
+
+const avatar_font = document.getElementById('avatar_font');
+const avatar_font_burger = document.getElementById('avatar_font_burger');
+
+
+
+if (localStorage.getItem('loginStatus') === 'true') {
+
+  for(let i = 0; i < users.length; i++) {
+    avatar_font.textContent = users[i].first_name[0] + users[i].last_name[0];
+    avatar_font_burger.textContent = users[i].first_name[0] + users[i].last_name[0]
+  }
+  
+  avatar_item_no_auth.style.display = 'none';
+  avatar_item_with_auth.style.display = 'flex';
+  window.addEventListener('resize', changeWithTrue);
+  if (with_body <= 1440) {
+    avatar_item_burger_no_auth.style.display = 'none';
+    avatar_item_burger_with_auth.style.display = 'flex';
+  } else {
+    avatar_item_burger_with_auth.style.display = 'none';
+  }
+
+
+
+  avatar_item_with_auth.addEventListener('click', () => {
+    menuWithAuth.classList.toggle('display_block_avatar');
+  });
+  
+  avatar_item_burger_with_auth.addEventListener('click', () => {
+    navActive.classList.remove('nav_active');
+    menuWithAuth.classList.toggle('display_block_avatar');
+  });
+  
+  document.addEventListener('click', (element) => {
+    if (!element.composedPath().includes(avatar_item_with_auth) && !element.composedPath().includes(menuWithAuth) && !element.composedPath().includes(avatar_item_burger_with_auth)) {
+      menuWithAuth.classList.remove('display_block_avatar');
+    }
+  })
+}
+
 /* Log In finish */
 
 
@@ -394,7 +414,6 @@ function LogoutUser() {
 }
 
 button_logout.addEventListener('click', LogoutUser);
-
 
 /* Log out finish */
 
