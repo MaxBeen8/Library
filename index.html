@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./img/favicon-32x32.png" type="image/x-icon">
   <title>Library</title>
 </head>
 <body class="container">
@@ -373,9 +374,6 @@
           </div>
         </div>
       </div>
-
-
-
     </section>
 
     <section class="coffee_shop" id="coffee_shop">
@@ -555,8 +553,8 @@
                 <h2 class="fonts_brooklyn_public_library">
                   Brooklyn Public Library
                 </h2>
-                <input type="text" class="input_text" name="Reader's name" placeholder="Reader's name">
-                <input type="text" class="input_text" name= "Card number" placeholder="Card number">
+                <input type="text" class="input_text" name="Reader's name" placeholder="Reader's name" id="input_name">
+                <input type="text" class="input_text" name= "Card number" placeholder="Card number" id="input_card_number">
               </div>
               <div class="check_the_card"><p class="fonts_check_the_card">Check the card</p>
               </div>
@@ -580,7 +578,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
                   </svg>
-                  <p class="stats_font_count" id="count_book_under"></p>
+                  <p class="stats_font_count" id="count_visit_under"></p>
                 </div>
                 <div class="bonuses">
                   <p class="stats_font">Bonuses</p>
@@ -596,7 +594,7 @@
                     <rect x="2" width="1" height="19" fill="#826844"/>
                     <rect x="1" width="1" height="21" fill="white"/>
                   </svg>
-                  <p class="stats_font_count">2</p>
+                  <p class="stats_font_count" id="count_books_under"></p>
                 </div>
               </div>
           </div>
@@ -711,7 +709,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
                       </svg>
-                      <p class="stats_font_count" id="count_book"></p>
+                      <p class="stats_font_count" id="count_visit"></p>
                     </div>
                     <div class="bonuses">
                       <p class="stats_font">Bonuses</p>
@@ -727,7 +725,7 @@
                         <rect x="2" width="1" height="19" fill="#826844"/>
                         <rect x="1" width="1" height="21" fill="white"/>
                       </svg>
-                      <p class="stats_font_count">2</p>
+                      <p class="stats_font_count" id="count_books"></p>
                     </div>
                   </div>
                   <p class="rented_books_font">
@@ -746,6 +744,55 @@
                     </svg>
                   </div>
                 </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal" id="my_modal_buy_card">
+        <form action="">
+          <div class="modal_buy_card">
+            <div class="modal_close" id="modal_close_buy_card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M2 16.8507L17 2" stroke="white" stroke-width="3"/>
+                <path d="M2 2.14929L17 17" stroke="white" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="title_buy_card">
+              <p class="title_buy_card_font">
+                Buy a library card
+              </p>
+            </div>
+            <div class="buy_card_flex">
+              <div class="bank_card">
+                <form action="">
+                  <p class="fonts_label">Bank card number</p>
+                  <input type="text" name="cardnumber" autocomplete="cc-number" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="bank_card_number" required>
+                  <p class="fonts_label">Expiration code</p>
+                  <div class="expiration_code_flex">
+                    <input type="text" name="ccmonth" autocomplete="cc-exp-month" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cc_month" required>
+                    <input type="text" name="ccyear" autocomplete="cc-exp-year" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cc_year" required>
+                  </div>
+                  <p class="fonts_label">CCV</p>
+                  <input type="password" name="cvc" autocomplete="cc-csc" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cvc" style="width: 45px;" required>
+                  <p class="fonts_label">Cardholder name</p>
+                  <input type="text" name="cardholdername" class="input_modal" id="cardholder_name" required>
+                  <p class="fonts_label">Postal code</p>
+                  <input type="text" name="postalcode" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="postal_code" required>
+                  <p class="fonts_label">City / Town</p>
+                  <input type="text" name="city_or_town" class="input_modal" id="city_or_town" required>
+                  <div class="cost_flex">
+                    <button class="button_buy_position">
+                      <p class="button_buy_font">Buy</p>
+                    </button>
+                    <p class="cost_book">
+                      25.00$
+                    </p>                    
+                  </div>
+                </form>
+              </div>
+              <div class="buy_card_description">
+                <p class="buy_card_description_font">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+              </div>
+            </div>
           </div>
         </form>
       </div>

@@ -680,6 +680,7 @@ input[type='radio'] {
   max-width: 461px;
   display: inline-flex;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .fonts_menu_coffee_and_tea {
@@ -955,7 +956,7 @@ input[type='radio'] {
 }
 
 .check_the_card:hover {
-  background-color: #edc997;;
+  background-color: #edc997;
 }
 
 .fonts_check_the_card {
@@ -1186,6 +1187,72 @@ input[type='radio'] {
   display: flex;
 }
 
+.modal_buy_card {
+  position: relative;
+  max-width: 650px;
+  max-height: 540px;
+  background: #fff;
+  box-shadow: 0px 4px 28px 0px rgba(34, 60, 80, 0.28);
+  transform: scale(0);
+  transition: transform 1s;
+  display: flex;
+  flex-direction: column;
+}
+
+.title_buy_card {
+  background-color: #000;
+  height: 60px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_buy_card_font {
+  color: #FFF;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 50% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.buy_card_flex {
+  display: flex;
+  padding: 30px 40px 40px 40px;
+  gap: 40px;
+}
+
+.button_buy_position {
+  left: 20px;
+  bottom: 15px;
+  width: 75px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.button_buy_position:hover {
+  background-color: #edc997;;
+}
+.buy_card_description_font {
+  color: #8E8E8E;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  letter-spacing: 2px;
+}
+
 .my_profile_flex {
   display: flex;
 }
@@ -1364,6 +1431,31 @@ input[type='radio'] {
   line-height: 20px; /* 100% */
 }
 
+.expiration_code_flex {
+  display: flex;
+  gap: 10px;
+  max-width: 100px;
+}
+
+.cost_flex {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.cost_book {
+  color: #0C0C0E;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 
 .modal.open .modal_register {
   transform: scale(1);
@@ -1374,6 +1466,10 @@ input[type='radio'] {
 }
 
 .modal.open .modal_my_profile {
+  transform: scale(1);
+}
+
+.modal.open .modal_buy_card {
   transform: scale(1);
 }
 
@@ -1599,7 +1695,7 @@ input[type='radio'] {
     }
 
     .map {
-      width: 75%;
+      width: 80%;
       margin: auto;
     }
 

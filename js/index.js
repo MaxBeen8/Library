@@ -199,9 +199,11 @@ autumn.addEventListener('click', () => {
 const modalLogIn = document.querySelector('.modal_login');
 const modalRegister = document.querySelector('.modal_register');
 const modalMyProfile = document.querySelector('.modal_my_profile');
+const modalBuyCard = document.querySelector('.modal_buy_card')
 const myModalLogIn = document.getElementById('my_modal_login');
 const myModalRegister = document.getElementById('my_modal_register');
 const myModalMyProfile = document.getElementById('my_modal_my_profile');
+const myModalBuyCard = document.getElementById('my_modal_buy_card');
 const logIn = document.getElementById('log_in');
 const buttonLoginUnder = document.getElementById('button_login_under');
 const register = document.getElementById('register');
@@ -212,7 +214,8 @@ const logOut = document.getElementById('log_out');
 const modalCloseRegister = document.getElementById('modal_close_register');
 const modalCloseLogIn = document.getElementById('modal_close_login');
 const modalCloseMyProfile = document.getElementById('modal_close_my_profile');
-
+const modalCloseBuyCard = document.getElementById('modal_close_buy_card');
+const button_position = document.querySelectorAll('.button_position');
 
 
 logIn.addEventListener('click', () => {
@@ -241,13 +244,31 @@ modalCloseRegister.addEventListener('click', () => {
   myModalRegister.classList.remove('open');
 });
 
-document.addEventListener('click', (element) => {
-  if (!element.composedPath().includes(modalLogIn) && !element.composedPath().includes(modalRegister) && !element.composedPath().includes(menuNoAuth) && !element.composedPath().includes(buttonSignupUnder) && !element.composedPath().includes(buttonLoginUnder) && !element.composedPath().includes(myProfile) && !element.composedPath().includes(modalMyProfile) && !element.composedPath().includes(myProfileUnder)) {
-		myModalLogIn.classList.remove('open');
-    myModalRegister.classList.remove('open');
-    myModalMyProfile.classList.remove('open');
-	}
+
+myModalLogIn.addEventListener('click', (element) => {
+  if (!element.composedPath().includes(modalLogIn)) {
+    myModalLogIn.classList.remove('open');
+  }
 })
+
+myModalRegister.addEventListener('click', (element) => {
+  if (!element.composedPath().includes(modalRegister)) {
+    myModalRegister.classList.remove('open');
+  }
+})
+
+myModalMyProfile.addEventListener('click', (element) => {
+  if (!element.composedPath().includes(modalMyProfile)) {
+    myModalMyProfile.classList.remove('open');
+  }
+})
+
+myModalBuyCard.addEventListener('click', (element) => {
+  if (!element.composedPath().includes(modalBuyCard)) {
+    myModalBuyCard.classList.remove('open');
+  }
+})
+
 
 document.getElementById('register_login').addEventListener('click', () => {
   myModalLogIn.classList.remove('open');
@@ -320,7 +341,12 @@ if (localStorage.getItem('loginStatus') === 'false') {
   avatar_item_no_auth.style.display = 'block';
   avatar_item_with_auth.style.display = 'none';
   window.addEventListener('resize', changeWithFalse);
-  
+
+  button_position.forEach(item => {
+    item.addEventListener('click', () => {
+      myModalLogIn.classList.add('open');
+    })
+  })
 
   avatar_item_no_auth.addEventListener('click', () => {
     menuNoAuth.classList.toggle('display_block_avatar');
@@ -347,12 +373,14 @@ const last_name = document.getElementById('last_name');
 const email = document.getElementById('email');
 const password_register = document.getElementById('password_register');
 const button_signup = document.getElementById('button_signup');
-
+const input_name = document.getElementById('input_name');
+const input_card_number = document.getElementById('input_card_number');
+const check_the_card = document.querySelector('.check_the_card')
 let users = JSON.parse(localStorage.getItem('usersArray'));
 
 
 class newUser {
-  constructor (first_name, last_name, email, password, initials, count_enter, card_number) {
+  constructor (first_name, last_name, email, password, initials, count_enter, card_number, books) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
@@ -360,6 +388,7 @@ class newUser {
     this.initials = initials;
     this.count_enter = count_enter;
     this.card_number = card_number;
+    this.books = books;
   }
 }
 
@@ -374,11 +403,12 @@ function registerNewUser() {
     card_number_random = card_number_random + hexadecimal[Math.floor(Math.random() * 16)];
   };
   if (emailRegexp.test(email.value) && passRegexp.test(password_register.value)) {
-    users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value, first_name.value[0].toUpperCase() + last_name.value[0].toUpperCase(), 0, card_number_random));
+    users.push(new newUser(first_name.value, last_name.value, email.value, password_register.value, first_name.value[0].toUpperCase() + last_name.value[0].toUpperCase(), 0, card_number_random, 0));
     localStorage.setItem('usersArray', JSON.stringify(users));
     alert('Success');
   }
 }
+
 
 button_signup.addEventListener('click', registerNewUser);
 /* Register finish */
@@ -409,29 +439,65 @@ function LoginUser() {
 button_login.addEventListener('click', LoginUser);
 
 
+function CheckCard() {
+  let i = 0;
+  while (i < users.length) {
+    if (users[i].first_name === input_name.value && users[i].card_number === input_card_number.value){
+      user_name_table_fonts.textContent = `${users[i].first_name}`;
+      card_number_table_fonts.textContent = users[i].card_number;
+      countBookUnder.textContent = users[i].count_enter;
+      form_border_no_auth.style.display = 'none';
+      form_border_with_auth.style.display = 'flex';
+      setTimeout(() => {
+        form_border_no_auth.style.display = 'flex';
+        input_name.value = '';
+        input_card_number.value = '';
+      }, 10000);
+      setTimeout(() => form_border_with_auth.style.display = 'none', 10000);
+      return
+    }
+    i++;
+  }
+  alert ("Invalid Reader's name or Card number");
+}
+
+
+
+
+check_the_card.addEventListener('click', CheckCard);
+
+
 const avatar_font = document.getElementById('avatar_font');
 const avatar_font_burger = document.getElementById('avatar_font_burger');
 const initialsFont = document.querySelector('.initials_font');
-const countBook = document.getElementById('count_book');
-const countBookUnder = document.getElementById('count_book_under');
+const countVisit = document.getElementById('count_visit');
+const countVisitUnder = document.getElementById('count_visit_under');
+const countBooks = document.getElementById('count_books');
+const countBooksUnder = document.getElementById('count_books_under');
 const card_number = document.querySelector('.card_number');
 const fonts_profile_with_auth = document.querySelector('.fonts_profile_with_auth');
 const user_name_font = document.querySelector('.user_name_font');
 const user_name_table_fonts = document.querySelector('.user_name_table_fonts');
 const card_number_table_fonts = document.querySelector('.card_number_table_fonts');
+const button_buy_position = document.querySelector('.button_buy_position');
+
+
 
 if (localStorage.getItem('loginStatus') === 'true') {
 
   for(let i = 0; i < users.length; i++) {
+
     avatar_font.textContent = users[i].first_name[0] + users[i].last_name[0];
     avatar_font_burger.textContent = users[i].first_name[0] + users[i].last_name[0];
     initialsFont.textContent = users[i].initials;
     user_name_font.textContent = `${users[i].first_name} ${users[i].last_name}`;
-    countBook.textContent = users[i].count_enter;
-    countBookUnder.textContent = users[i].count_enter;
+    countVisit.textContent = users[i].count_enter;
+    countVisitUnder.textContent = users[i].count_enter;
+    countBooks.textContent = users[i].books;
+    countBooksUnder.textContent = users[i].books;
     card_number.textContent = users[i].card_number;
     fonts_profile_with_auth.textContent = users[i].card_number;
-    user_name_table_fonts.textContent = `${users[i].first_name} ${users[i].last_name}`;
+    user_name_table_fonts.textContent = `${users[i].first_name}`;
     card_number_table_fonts.textContent = users[i].card_number;
   }
   
@@ -450,6 +516,23 @@ if (localStorage.getItem('loginStatus') === 'true') {
   } else {
     avatar_item_burger_with_auth.style.display = 'none';
   }
+
+
+
+  button_position.forEach(item => {
+    item.addEventListener('click', () => {
+      myModalBuyCard.classList.add('open');
+      button_buy_position.addEventListener('click', () => {
+        users[i].books = users[i].books + 1;
+        item.classList.remove('button_buy_font');
+        item.classList.add('owm');
+      })
+    })
+  })
+
+  modalCloseBuyCard.addEventListener('click', () => {
+    myModalBuyCard.classList.remove('open');
+  });
 
   avatar_item_with_auth.addEventListener('click', () => {
     menuWithAuth.classList.toggle('display_block_avatar');
