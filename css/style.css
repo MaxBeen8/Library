@@ -43,10 +43,11 @@ html {
   background-color: #0C0C0E;
   position: sticky;
   top: 0;
+  z-index: 9999;
 }
 
 .nav_flex {
-  display: flex; 
+  display: flex;
 }
 
 .header_list {
@@ -81,10 +82,22 @@ text-decoration: none;
   margin-right: 30px;
 }
 
+.avatar_item_with_auth {
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  background-color: #FFF;
+  display: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+}
+
 .avatar_and_burger {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  gap: 40px;
 }
 
 .burger {
@@ -116,10 +129,28 @@ text-decoration: none;
   bottom: 0;
 }
 
-.avatar_item_burger {
+.avatar_item_burger_no_auth {
   display: none;
 }
 
+.icon {
+  cursor: pointer;
+}
+
+.icon_burger {
+  cursor: pointer;
+}
+
+.avatar_font {
+  text-transform: uppercase;
+  text-align: center;
+  color: #BB945F;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
 
 .header_link {
   font-family: 'Inter';
@@ -160,7 +191,11 @@ text-decoration: none;
   display: none;
 }
 
-.fonts_profile {
+.avatar_item_burger_with_auth {
+  display: none;
+}
+
+.fonts_profile_no_auth {
   margin-top: 5px;
   text-align: center;
   color: #000;
@@ -171,7 +206,27 @@ text-decoration: none;
   line-height: 20px;
 }
 
-.fonts_profile::after {
+.fonts_profile_with_auth {
+  margin-top: 5px;
+  text-align: center;
+  color: #000;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.fonts_profile_no_auth::after {
+  margin: 0 auto;
+  margin-top: 5px;
+  content: "";
+  display: block;
+  width: 40px;
+  border-bottom: 1px solid #BB945F;
+}
+
+.fonts_profile_with_auth::after {
   margin: 0 auto;
   margin-top: 5px;
   content: "";
@@ -206,8 +261,6 @@ text-decoration: none;
 .display_block_avatar {
   display: block;
 }
-
-
 /* Header end */
 
 /* Welcome start*/
@@ -456,7 +509,7 @@ input[type='radio'] {
   flex-shrink: 1;
   border: 1px solid #000;
   background: #FFF;
-  z-index: -1;
+  z-index: 0;
 }
 
 .text_staff_picks {
@@ -531,15 +584,21 @@ input[type='radio'] {
   position: absolute;
   left: 20px;
   bottom: 15px;
-}
-
-.button_buy {
   width: 75px;
   height: 30px;
-  flex-shrink: 0;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
-  color: #0C0C0E;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_position:hover {
+  background-color: #edc997;
+}
+
+.button_buy_font {
   text-align: center;
   font-family: Inter;
   font-size: 10px;
@@ -548,6 +607,7 @@ input[type='radio'] {
   line-height: normal;
   letter-spacing: 1px;
   background: transparent;
+  cursor: pointer;
 }
 
 
@@ -620,6 +680,7 @@ input[type='radio'] {
   max-width: 461px;
   display: inline-flex;
   justify-content: space-between;
+  white-space: nowrap;
 }
 
 .fonts_menu_coffee_and_tea {
@@ -788,9 +849,20 @@ input[type='radio'] {
   letter-spacing: 0.6px;
 }
 
-.form_border {
+.form_border_no_auth {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   max-width: 600px;
-  flex-shrink: 0;
+  border: 3px solid #BB945F;
+  background: transparent;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.form_border_with_auth {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 3px solid #BB945F;
   background: transparent;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -798,7 +870,6 @@ input[type='radio'] {
 
 .background_form {
   padding: 20px;
-  flex-shrink: 0;
   background: #BB945F;
   margin: 20px 20px 0px 20px;
 }
@@ -832,6 +903,39 @@ input[type='radio'] {
   border: none;
 }
 
+.user_name_table {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 0 20px 0 20px;
+  width: 520px;
+  min-height: 66px;
+  border-radius: 10px;
+  background: #FFF;
+  border: none;
+}
+
+
+.user_name_table_fonts {
+  color: #BB945F;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 166.667% */
+  letter-spacing: 0.6px;
+}
+
+.card_number_table_fonts {
+  color: #BB945F;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 166.667% */
+  letter-spacing: 0.6px;
+}
+
 ::placeholder {
   color: #8E8E8E;
   font-family: Forum;
@@ -843,12 +947,16 @@ input[type='radio'] {
 }
 
 .check_the_card {
-  display: flex;
   padding: 10px 40px;
   margin: 20px auto;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
   background: transparent;
+  cursor: pointer;
+}
+
+.check_the_card:hover {
+  background-color: #edc997;
 }
 
 .fonts_check_the_card {
@@ -862,7 +970,7 @@ input[type='radio'] {
   letter-spacing: 1px;
 }
 
-.fonts_title_get_a_reader_card {
+.fonts_title_get_a_reader_card, .fonts_visit_your_profile {
   color: #000;
   text-align: right;
   font-family: Forum;
@@ -874,7 +982,7 @@ input[type='radio'] {
   overflow: hidden;
 }
 
-.description__get_a_reader_card {
+.description_get_a_reader_card, .description_visit_your_profile {
   max-width: 464px;
   margin-top: 35px;
   margin-bottom: 35px;
@@ -896,9 +1004,10 @@ input[type='radio'] {
 
 .flex_button {
   width: 100%;
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
   border-radius: 2px;
+  gap: 20px;
 }
 
 .fonts_enter {
@@ -907,7 +1016,6 @@ input[type='radio'] {
   text-align: center;
   width: 75px;
   height: 30px;
-  margin-left: 20px;
   color: #0C0C0E;
   text-align: center;
   font-family: Inter;
@@ -917,6 +1025,14 @@ input[type='radio'] {
   line-height: normal;
   letter-spacing: 1px;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fonts_enter:hover {
+  background-color: #edc997;
 }
 /* Digital Library Cards finish */
 
@@ -996,7 +1112,7 @@ input[type='radio'] {
   width: 100%;
   height: 100vh;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   display: grid;
   align-items: center;
   justify-content: center;
@@ -1006,7 +1122,7 @@ input[type='radio'] {
   transition: all 0.6s ease;
 }
 
-.modal.open {
+.open {
   visibility: visible;
   opacity: 1;
 }
@@ -1042,11 +1158,318 @@ input[type='radio'] {
   transition: transform 1s;
 }
 
+.button_signup ,.button_login {
+  width: 75px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  color: #0C0C0E;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  background: transparent;
+  margin-top: 10px;
+}
+
+.modal_my_profile {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background: #fff;
+  box-shadow: 0px 4px 28px 0px rgba(34, 60, 80, 0.28);
+  transform: scale(0);
+  transition: transform 1s;
+  display: flex;
+}
+
+.modal_buy_card {
+  position: relative;
+  max-width: 650px;
+  max-height: 540px;
+  background: #fff;
+  box-shadow: 0px 4px 28px 0px rgba(34, 60, 80, 0.28);
+  transform: scale(0);
+  transition: transform 1s;
+  display: flex;
+  flex-direction: column;
+}
+
+.title_buy_card {
+  background-color: #000;
+  height: 60px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_buy_card_font {
+  color: #FFF;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 50% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.buy_card_flex {
+  display: flex;
+  padding: 30px 40px 40px 40px;
+  gap: 40px;
+}
+
+.button_buy_position {
+  left: 20px;
+  bottom: 15px;
+  width: 75px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.button_buy_position:hover {
+  background-color: #edc997;;
+}
+.buy_card_description_font {
+  color: #8E8E8E;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  letter-spacing: 2px;
+}
+
+.my_profile_flex {
+  display: flex;
+}
+
+.user {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 170px;
+  height: 100%;
+  background-color: #000;
+  gap: 15px;
+  padding: 25px;
+}
+
+.user_name_flex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.initials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF;
+  width: 80px;
+  height: 80px;
+  
+}
+
+.initials_font {
+  color: #BB945F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  text-transform: capitalize;
+}
+
+.user_name {
+  background-color: #FFF;
+  padding: 5px 10px;
+}
+
+.user_name_font {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  text-transform: uppercase;
+}
+
+.user_description {
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
+.my_profile_font {
+  color: #000;
+  text-align: left;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 50% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.stats {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+
+.stats_table {
+  margin: 15px 0px;
+  display: flex;
+  gap: 35px;
+}
+
+
+.visits ,.bonuses, .books {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats_font {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+.stats_font_count {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 200% */
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
+}
+
+.rented_books_font {
+  color: #0C0C0E;
+  text-align: left;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 80% */
+  margin-bottom: 30px;
+}
+
+.book_author_font {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.card_number_flex {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.card_number_font {
+  color: #0C0C0E;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+
+.card_number {
+  color: #BB945F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+
+.expiration_code_flex {
+  display: flex;
+  gap: 10px;
+  max-width: 100px;
+}
+
+.cost_flex {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.cost_book {
+  color: #0C0C0E;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
 .modal.open .modal_register {
   transform: scale(1);
 }
 
 .modal.open .modal_login {
+  transform: scale(1);
+}
+
+.modal.open .modal_my_profile {
+  transform: scale(1);
+}
+
+.modal.open .modal_buy_card {
   transform: scale(1);
 }
 
@@ -1138,6 +1561,7 @@ input[type='radio'] {
   cursor: pointer;
 }
 
+
 /* Modal finish*/
 
 
@@ -1163,24 +1587,10 @@ input[type='radio'] {
       transition: 0.2s all linear;
     }
 
-    .avatar_item_burger {
-      position: absolute;
-      display: block;
-      width: 32px;
-      height: 32px;
-      z-index: 2;
-    }
-
-    .icon_burger {
-      position: absolute;
-      top: 32px;
-      right: -45px;
-    }
-
     .nav_close {
       cursor: pointer;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       position: absolute;
       top: 30px;
       right: 20px;
@@ -1232,10 +1642,6 @@ input[type='radio'] {
       opacity: 0.60;
     }
 
-    .avatar_item {
-      margin-right: 40px;
-    }
-
     .drop_menu_no_auth {
       top: 60px;
       right: 105px;
@@ -1244,7 +1650,6 @@ input[type='radio'] {
     .drop_menu_with_auth {
       top: 60px;
       right: 105px;
-      
     }
 
     .circle:nth-last-child(-n + 2) {
@@ -1290,7 +1695,8 @@ input[type='radio'] {
     }
 
     .map {
-      width: 100%;
+      width: 80%;
+      margin: auto;
     }
 
     .flex_digital_library_cards {
@@ -1300,11 +1706,11 @@ input[type='radio'] {
       justify-content: center;
     }
 
-    .fonts_title_get_a_reader_card {
+    .fonts_title_get_a_reader_card, .fonts_visit_your_profile{
       text-align: center;
     }
 
-    .description__get_a_reader_card {
+    .description_get_a_reader_card, .description_visit_your_profile {
       text-align: center;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -1313,5 +1719,35 @@ input[type='radio'] {
     .flex_button {
       justify-content: center;
     }
+
+    .avatar_item_burger_no_auth {
+      display: block;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 30px;
+      right: 92px;
+    }
+
+    .avatar_item_burger_with_auth {
+      justify-content: center;
+      align-items: center;
+      border-radius: 28px;
+      background-color: #FFF;
+      display: none;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 30px;
+      right: 92px;
+    }
+  }
+
+  @media screen and (max-width: 680px) {
+    .user_name_table {
+      width: 100%;
+    }    
   }
 /* Media finish */
