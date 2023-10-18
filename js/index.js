@@ -519,16 +519,12 @@ if (localStorage.getItem('loginStatus') === 'true') {
 
 
 
+
   button_position.forEach(item => {
     item.addEventListener('click', () => {
       myModalBuyCard.classList.add('open');
-      button_buy_position.addEventListener('click', () => {
-        users[i].books = users[i].books + 1;
-        item.classList.remove('button_buy_font');
-        item.classList.add('owm');
       })
     })
-  })
 
   modalCloseBuyCard.addEventListener('click', () => {
     myModalBuyCard.classList.remove('open');
@@ -566,7 +562,11 @@ button_logout.addEventListener('click', LogoutUser);
 
 /* Log out finish */
 
-
+const welcome_fonts = document.querySelector('.welcome_fonts');
+welcome_fonts.addEventListener('click', () => {
+  navigator.clipboard.writeText(welcome_fonts.textContent);
+  alert('Copied: 5578 8549 6054 8999');
+})
 
 
 

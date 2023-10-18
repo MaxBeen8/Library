@@ -289,8 +289,7 @@ text-decoration: none;
 }
 
 .welcome_fonts {
-  max-height: 150px;
-  max-width: 520px;
+  max-width: 372px;
   flex-shrink: 0;
   color: #FFF;
   text-align: center;
