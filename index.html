@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./img/favicon-32x32.png" type="image/x-icon">
   <title>Library</title>
 </head>
 <body class="container">
   <header class="header"> 
       <div class="header_wrapper">
         <div>
-          <a href="#brooklyn" class="header_name js-scroll">Brooklyn Public Library</a>
+          <a href="#brooklyn" class="header_name js-scroll" id="a">Brooklyn Public Library</a>
         </div>
         <div class="nav_flex">
           <nav class="nav">
@@ -32,10 +33,11 @@
                 <a href="#library_card" class="header_link js-scroll">Library Card</a>
               </li>
             </ul>
-            <div class="avatar_item_burger">
-              <a class="header_link">
+            <div class="avatar_item_burger_with_auth">
+              <p class="avatar_font" id="avatar_font_burger"></p>
+            </div>
+            <div class="avatar_item_burger_no_auth">
               <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon_burger">
-              </a>
             </div>
             <div class="nav_close">
               <span class="close_line"></span>
@@ -43,10 +45,11 @@
             </div>
           </nav> 
           <div class="avatar_and_burger">
-            <div class="avatar_item">
-              <a class="header_link">
-              <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon">
-              </a>
+            <div class="avatar_item_with_auth">
+              <p class="avatar_font" id="avatar_font"></p>
+            </div>
+            <div class="avatar_item_no_auth">
+              <img src="./img/svg/icon_profile.svg" alt="avatar" class="icon_burger">
             </div>
             <div class="burger">
                 <span class="burger_line burger_line_first"></span>
@@ -57,17 +60,17 @@
         </div>
       </div>
       <div class="drop_menu_no_auth fade-in-animation">
-        <p class="fonts_profile">Profile</p>
+        <p class="fonts_profile_no_auth">Profile</p>
         <div class="fonts_log_in_register_my_profile_log_out">
           <p class="cursor" id="log_in">Log in</p>
           <p class="cursor" id="register">Register</p>
         </div>
       </div>
       <div class="drop_menu_with_auth fade-in-animation">
-        <p class="fonts_profile">Profile</p>
+        <p class="fonts_profile_with_auth">Profile</p>
         <div class="fonts_log_in_register_my_profile_log_out">
-          <p class="cursor">My profile</p>
-          <p class="cursor">Log Out</p>
+          <p class="cursor" id="my_profile">My profile</p>
+          <p class="cursor" id="log_out">Log Out</p>
         </div>
       </div>
   </header>
@@ -139,9 +142,9 @@
             <p class="description_book">
               An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book.png" alt="the book eaters" class="img_the_book">
           </div>
   
@@ -154,9 +157,9 @@
             <p class="description_book">
               Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book2.png" alt="Cackle" class="img_the_book">
           </div>
   
@@ -169,9 +172,9 @@
             <p class="description_book">
               Auerbach's engaging book places the 'Comedy' within the tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual and his drama of soul into something of divine significance—an inspired introduction to Dante's main themes.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book3.png" alt="Dante: Poet of the Secular World" class="img_the_book">
           </div>
   
@@ -184,9 +187,9 @@
             <p class="description_book">
               A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book4.png" alt="The Last Queen" class="img_the_book">
           </div>
         </div>
@@ -201,9 +204,9 @@
             <p class="description_book">
               Powerful novel that takes you back to a nostalgic time, exploring both the beauty and danger and loss of innocence that is youth.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book5.png" alt="the book eaters" class="img_the_book">
           </div>
   
@@ -216,9 +219,9 @@
             <p class="description_book">
               This memoir about the author's relationship with gun violence feels both expansive and intimate, resulting in a lyrical indictment of the way things are.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book6.png" alt="Cackle" class="img_the_book">
           </div>
   
@@ -231,9 +234,9 @@
             <p class="description_book">
               A sardonic view of Silicon Valley culture, a meditation on race, and a journal of displacement and belonging, all in one form-defying package of spare prose.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book7.png" alt="Dante: Poet of the Secular World" class="img_the_book">
           </div>
   
@@ -246,9 +249,9 @@
             <p class="description_book">
               A fascinating story of a teenage girl who marries a man twice her age with the promise to bring her to America. Her marriage is an opportunity for her family to eventually immigrate. For fans of Isabel Allende and Julia Alvarez.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book8.png" alt="The Last Queen" class="img_the_book">
           </div>
         </div>
@@ -263,9 +266,9 @@
             <p class="description_book">
               Drawing and color by Damien Roudeau | This book illustrates the struggles of a group of indigenous Ecuadoreans as they try to sue the ChevronTexaco company for damage their oil fields did to the Amazon and her people
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book9.png" alt="The Last Queen" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -277,9 +280,9 @@
             <p class="description_book">
               Chouinard—climber, businessman, environmentalist—shares tales of courage and persistence from his experience of founding and leading Patagonia, Inc. Full title: Let My People Go Surfing: The Education of a Reluctant Businessman, Including 10 More Years of Business Unusual.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book10.png" alt="the book eaters" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -291,9 +294,9 @@
             <p class="description_book">
               This collection of bold and scathingly beautiful feminist poems imagines what comes after our current age of environmental destruction, racism, sexism, and divisive politics.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book11.png" alt="Cackle" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -305,9 +308,9 @@
             <p class="description_book">
               An epic saga of seven generations of one family encompasses the tumultuous history of Hawaii as a Hawaiian woman gathers her four granddaughters together in an erotic tale of villains and dreamers, queens and revolutionaries, lepers and healers.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book12.png" alt="Dante: Poet of the Secular World" class="img_the_book">
           </div>
         </div>
@@ -322,9 +325,9 @@
             <p class="description_book">
               White's impressive debut collection takes readers through and beyond the concepts of conversation and the casual - both what we say to each other and what we don't, examining the possibilities around how we construct and communicate identity.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book13.png" alt="The Last Queen" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -336,9 +339,9 @@
             <p class="description_book">
               The harrowing story of an ordinary American and a principled Naval officer who, horrified by the burning of Smyrna, led an extraordinary rescue effort that saved a quarter of a million refugees from the Armenian Genocide.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book14.png" alt="the book eaters" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -350,9 +353,9 @@
             <p class="description_book">
               With the fall rolling around, one can't help but think of baseball's postseason coming up! And what better way to prepare for it than reading the biography of one of the game's all-time greatest performers, the Man of Steal, Rickey Henderson?
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book15.png" alt="Cackle" class="img_the_book">
           </div>
           <div class="staff_picks_all">
@@ -364,16 +367,13 @@
             <p class="description_book">
               Exes Tegan and Sara find themselves chained together by hairballs of codependency. A father and child experience the shared trauma of giving birth to gods from their wounds.
             </p>
-            <form action="" class="button_position">
-              <button class="button_buy">Buy</button>
-            </form>
+            <div class="button_position">
+              <p class="button_buy_font">Buy</p>
+            </div>
             <img src="./img/book16.png" alt="Dante: Poet of the Secular World" class="img_the_book">
           </div>
         </div>
       </div>
-
-
-
     </section>
 
     <section class="coffee_shop" id="coffee_shop">
@@ -547,31 +547,82 @@
           <h2 class="fonts_title_find_your_library_card">
             Find your Library card
           </h2>
-          <form action="">
-            <div class="form_border">
+          
+          <div class="form_border_no_auth">
               <div class="background_form">
                 <h2 class="fonts_brooklyn_public_library">
                   Brooklyn Public Library
                 </h2>
-                <input type="text" class="input_text" name="Reader's name" placeholder="Reader's name">
-                <input type="text" class="input_text" name= "Card number" placeholder="Card number">
+                <input type="text" class="input_text" name="Reader's name" placeholder="Reader's name" id="input_name">
+                <input type="text" class="input_text" name= "Card number" placeholder="Card number" id="input_card_number">
               </div>
-              <button class="check_the_card"><span class="fonts_check_the_card">Check the card</span>
-              </button>
-            </div>
-          </form>
+              <div class="check_the_card"><p class="fonts_check_the_card">Check the card</p>
+              </div>
+          </div>
+          
+          <div class="form_border_with_auth">
+              <div class="background_form">
+                <h2 class="fonts_brooklyn_public_library">
+                  Brooklyn Public Library
+                </h2>
+                <div class="user_name_table">
+                  <p class="user_name_table_fonts"></p>
+                </div>
+                <div class="user_name_table">
+                  <p class="card_number_table_fonts"></p>
+                </div>
+              </div>
+              <div class="stats_table">
+                <div class="visits">
+                  <p class="stats_font">Visits</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
+                  </svg>
+                  <p class="stats_font_count" id="count_visit_under"></p>
+                </div>
+                <div class="bonuses">
+                  <p class="stats_font">Bonuses</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                    <path d="M10 0L12.2249 3.31001L15.8779 2.00532L15.8249 6.05634L19.5106 7.25532L17.2 10.5L19.5106 13.7447L15.8249 14.9437L15.8779 18.9947L12.2249 17.69L10 21L7.77508 17.69L4.12215 18.9947L4.17508 14.9437L0.489435 13.7447L2.8 10.5L0.489435 7.25532L4.17508 6.05634L4.12215 2.00532L7.77508 3.31001L10 0Z" fill="#BB945F"/>
+                  </svg>
+                  <p class="stats_font_count">1240</p>
+                </div>
+                <div class="books">
+                  <p class="stats_font">Books</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                    <rect width="20" height="21" fill="#BB945F"/>
+                    <rect x="2" width="1" height="19" fill="#826844"/>
+                    <rect x="1" width="1" height="21" fill="white"/>
+                  </svg>
+                  <p class="stats_font_count" id="count_books_under"></p>
+                </div>
+              </div>
+          </div>
         </div>
         <div class="title_get_a_reader_card">
           <h2 class="fonts_title_get_a_reader_card">
             Get a reader card
           </h2>
-          <p class="description__get_a_reader_card">
-            You will be able to see a reader card after logging into account or you can register a new account
+          <p class="description_get_a_reader_card">
+            You will be able to see a reader card after logging into account or you can register a new account.
           </p>
           <form action="">
             <div class="flex_button">
-              <button class="fonts_enter">Sign Up</button>
-              <button class="fonts_enter">Log in</button>
+              <div class="fonts_enter" id="button_signup_under">Sign Up</div>
+              <div class="fonts_enter" id="button_login_under">Log in</div>
+            </div>
+          </form>         
+        </div>
+        <div class="title_visit_your_profile">
+          <h2 class="fonts_visit_your_profile">
+            Visit your profile
+          </h2>
+          <p class="description_visit_your_profile">
+            With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.
+          </p>
+          <form action="">
+            <div class="flex_button">
+              <div class="fonts_enter" id="my_profile_under">Profile</div>
             </div>
           </form>         
         </div>
@@ -589,14 +640,14 @@
             <p class="fonts_register_login">Register</p>
             <div class="input">
               <p class="fonts_label">First name</p>
-              <input type="text" name="first_name" class="input_modal">
+              <input type="text" name="first_name" class="input_modal" id="first_name" required>
               <p  class="fonts_label">Last name</p>
-              <input type="text" name="Last_name" class="input_modal">
+              <input type="text" name="last_name" class="input_modal" id="last_name" required>
               <p class="fonts_label">E-mail</p>
-              <input type="text" name="E-mail" class="input_modal">
+              <input type="text" name="E-mail" class="input_modal" id="email" required>
               <p class="fonts_label">Password</p>
-              <input type="text" name="Password" class="input_modal">
-              <button class="button">Sign Up</button>
+              <input type="password" name="password" class="input_modal" id="password_register" pattern="[A-Za-z0-9]{5,30}" required>
+              <button class="button_signup" id="button_signup">Sign Up</button>
             </div>
             <div class="have_acc">
               <p class="have_acc_fonts">Already have an account?</p>
@@ -617,14 +668,130 @@
             <p class="fonts_register_login">Login</p>
             <div class="input">
               <p class="fonts_label">E-mail or readers card</p>
-              <input type="text" name="E-mail_or_readers_card" class="input_modal">
+              <input type="text" name="E-mail_or_readers_card" class="input_modal" id="email_login">
               <p class="fonts_label">Password</p>
-              <input type="text" name="Password" class="input_modal">
-              <button class="button">Sign Up</button>
+              <input type="password" name="password" class="input_modal" id="password_login">
+              <button class="button_login" id="button_login">Log In</button>
             </div>
             <div class="have_acc">
               <p class="have_acc_fonts">Don’t have an account?</p>
               <p class="login_register_fonts" id="register_login">Register</p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal" id="my_modal_my_profile">
+        <form action="">
+          <div class="modal_my_profile">
+            <div class="modal_close" id="modal_close_my_profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
+                <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
+              </svg>
+            </div>
+                <div class="user">
+                  <div class="user_name_flex">
+                    <div class="initials">
+                      <p class="initials_font"></p>
+                    </div>
+                    <div class="user_name">
+                      <p class="user_name_font"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="user_description">
+                  <h1 class="my_profile_font">
+                    my profile
+                  </h1>
+                  <div class="stats">
+                    <div class="visits">
+                      <p class="stats_font">Visits</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
+                      </svg>
+                      <p class="stats_font_count" id="count_visit"></p>
+                    </div>
+                    <div class="bonuses">
+                      <p class="stats_font">Bonuses</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                        <path d="M10 0L12.2249 3.31001L15.8779 2.00532L15.8249 6.05634L19.5106 7.25532L17.2 10.5L19.5106 13.7447L15.8249 14.9437L15.8779 18.9947L12.2249 17.69L10 21L7.77508 17.69L4.12215 18.9947L4.17508 14.9437L0.489435 13.7447L2.8 10.5L0.489435 7.25532L4.17508 6.05634L4.12215 2.00532L7.77508 3.31001L10 0Z" fill="#BB945F"/>
+                      </svg>
+                      <p class="stats_font_count">1240</p>
+                    </div>
+                    <div class="books">
+                      <p class="stats_font">Books</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                        <rect width="20" height="21" fill="#BB945F"/>
+                        <rect x="2" width="1" height="19" fill="#826844"/>
+                        <rect x="1" width="1" height="21" fill="white"/>
+                      </svg>
+                      <p class="stats_font_count" id="count_books"></p>
+                    </div>
+                  </div>
+                  <p class="rented_books_font">
+                    Rented books
+                  </p>
+                  <ul>
+                    <li class="book_author_font">The Last Queen, Clive Irving</li>
+                    <li class="book_author_font">Dominicana, Angie Cruz</li>
+                  </ul>
+                  <div class="card_number_flex">
+                    <p class="card_number_font">Card number</p>
+                    <p class="card_number" id="number_copy">F00234030</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none" class="cursor" id="copy">
+                      <rect x="2.46826" y="0.25" width="10.5917" height="9.5" rx="0.75" stroke="black" stroke-width="0.5"/>
+                      <rect x="0.25" y="2.25" width="10.5917" height="9.5" rx="0.75" fill="white" stroke="black" stroke-width="0.5"/>
+                    </svg>
+                  </div>
+                </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal" id="my_modal_buy_card">
+        <form action="">
+          <div class="modal_buy_card">
+            <div class="modal_close" id="modal_close_buy_card">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M2 16.8507L17 2" stroke="white" stroke-width="3"/>
+                <path d="M2 2.14929L17 17" stroke="white" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="title_buy_card">
+              <p class="title_buy_card_font">
+                Buy a library card
+              </p>
+            </div>
+            <div class="buy_card_flex">
+              <div class="bank_card">
+                <form action="">
+                  <p class="fonts_label">Bank card number</p>
+                  <input type="text" name="cardnumber" autocomplete="cc-number" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="bank_card_number" required>
+                  <p class="fonts_label">Expiration code</p>
+                  <div class="expiration_code_flex">
+                    <input type="text" name="ccmonth" autocomplete="cc-exp-month" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cc_month" required>
+                    <input type="text" name="ccyear" autocomplete="cc-exp-year" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cc_year" required>
+                  </div>
+                  <p class="fonts_label">CCV</p>
+                  <input type="password" name="cvc" autocomplete="cc-csc" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="cvc" style="width: 45px;" required>
+                  <p class="fonts_label">Cardholder name</p>
+                  <input type="text" name="cardholdername" class="input_modal" id="cardholder_name" required>
+                  <p class="fonts_label">Postal code</p>
+                  <input type="text" name="postalcode" inputmode="numeric" pattern="[0-9]*" class="input_modal" id="postal_code" required>
+                  <p class="fonts_label">City / Town</p>
+                  <input type="text" name="city_or_town" class="input_modal" id="city_or_town" required>
+                  <div class="cost_flex">
+                    <button class="button_buy_position">
+                      <p class="button_buy_font">Buy</p>
+                    </button>
+                    <p class="cost_book">
+                      25.00$
+                    </p>                    
+                  </div>
+                </form>
+              </div>
+              <div class="buy_card_description">
+                <p class="buy_card_description_font">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+              </div>
             </div>
           </div>
         </form>
