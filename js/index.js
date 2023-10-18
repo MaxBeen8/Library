@@ -375,7 +375,8 @@ const password_register = document.getElementById('password_register');
 const button_signup = document.getElementById('button_signup');
 const input_name = document.getElementById('input_name');
 const input_card_number = document.getElementById('input_card_number');
-const check_the_card = document.querySelector('.check_the_card')
+const check_the_card = document.querySelector('.check_the_card');
+
 let users = JSON.parse(localStorage.getItem('usersArray'));
 
 
@@ -566,6 +567,13 @@ const welcome_fonts = document.querySelector('.welcome_fonts');
 welcome_fonts.addEventListener('click', () => {
   navigator.clipboard.writeText(welcome_fonts.textContent);
   alert('Copied: 5578 8549 6054 8999');
+})
+
+const number = document.getElementById('copy');
+const numberCopy = document.getElementById('number_copy');
+copy.addEventListener('click', () => {
+  navigator.clipboard.writeText(numberCopy.textContent);
+  alert('Copied');
 })
 
 
